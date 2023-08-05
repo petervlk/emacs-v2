@@ -49,3 +49,14 @@
 
 ;;;; WRITING DOCS
 (require 'crafted-writing-config)
+
+;;;; Optional configuration
+
+;; Profile emacs startup
+(add-hook 'emacs-startup-hook
+          (lambda ()
+            (message "Crafted Emacs loaded in %s."
+                     (emacs-init-time))))
+
+;; Set default coding system (especially for Windows)
+(set-default-coding-systems 'utf-8)
