@@ -1,6 +1,7 @@
 *.elc
 auto-save-list/
 bookmarks
+crafted-emacs/
 custom.el
 elpa/
 history

@@ -5,7 +5,7 @@
   (load custom-file nil :nomessage))
 
 ;; Bootstrap crafted-emacs in init.el
-(load "~/.config/crafted-emacs/modules/crafted-init-config")
+(load "~/.config/emacs/crafted-emacs/modules/crafted-init-config")
 
 ;; Add package definitions for completion packages
 ;; to `package-selected-packages'.

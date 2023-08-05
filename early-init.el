@@ -1,5 +1,5 @@
 ;; Set up package archives
-(load "~/.config/crafted-emacs/modules/crafted-early-init-config")
+(load "~/.config/emacs/crafted-emacs/modules/crafted-early-init-config")
 
 ;; Fullscreen by default, as early as possible. This tiny window is not enough
 (set-frame-parameter (selected-frame) 'fullscreen 'maximized)
