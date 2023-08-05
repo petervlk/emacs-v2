@@ -1,0 +1,8 @@
+*.elc
+auto-save-list/
+bookmarks
+custom.el
+elpa/
+history
+recentf
+transient/
