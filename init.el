@@ -9,6 +9,7 @@
 
 ;; Add package definitions for completion packages
 ;; to `package-selected-packages'.
+(add-to-list 'package-selected-packages 'no-littering)
 (add-to-list 'package-selected-packages 'magit)
 (require 'crafted-completion-packages)
 (require 'crafted-evil-packages)
@@ -29,6 +30,12 @@
 
 ;; Use "y" and "n" to confirm/negate prompt instead of "yes" and "no"
 (setq use-short-answers t)
+
+;; Move autosaves to 'auto-save/' directory
+(custom-set-variables
+ '(auto-save-file-name-transforms `((".*" ,(no-littering-expand-var-file-name "auto-save/") t)))
+ '(backup-directory-alist `((".*" . ,(no-littering-expand-var-file-name "backup/"))))
+ )
 
 (require 'crafted-completion-config)
 (require 'crafted-evil-config)
