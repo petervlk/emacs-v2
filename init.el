@@ -131,6 +131,11 @@
  '(dired-kill-when-opening-new-dired-buffer t))
 
 
+;;;; Project
+
+;; Make it possible to ignore risky local variables
+(advice-add 'risky-local-variable-p :override #'ignore)
+
 ;;;; Optional configuration
 
 ;; Profile emacs startup
