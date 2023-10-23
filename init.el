@@ -118,10 +118,11 @@
 
 
 ;;;; Source Control
-(custom-set-variables '(magit-diff-refine-hunk t)
-                      '(magit-no-confirm '(stage-all-changes
-                                           unstage-all-changes))
-                      '(magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1))
+(custom-set-variables
+ '(magit-diff-refine-hunk t)
+ '(magit-no-confirm '(stage-all-changes
+                      unstage-all-changes))
+ '(magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1))
 
 
 ;;;; Optional configuration
