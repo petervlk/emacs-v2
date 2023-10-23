@@ -167,6 +167,13 @@
 (require 'crafted-writing-config)
 
 
+;;;; Key bindings
+
+(evil-collection-define-key 'normal 'dired-mode-map
+  "h" 'dired-up-directory
+  "l" 'dired-find-file)
+
+
 ;;;; Source Control
 (custom-set-variables
  '(magit-diff-refine-hunk t)
