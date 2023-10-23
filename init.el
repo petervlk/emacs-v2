@@ -186,6 +186,14 @@
 ;; Make it possible to ignore risky local variables
 (advice-add 'risky-local-variable-p :override #'ignore)
 
+
+;;;; Clojure
+
+;; accept kebab-case words
+(add-hook 'clojure-mode-hook (lambda () (modify-syntax-entry ?- "w")))
+(add-hook 'emacs-lisp-mode-hook (lambda () (modify-syntax-entry ?- "w")))
+
+
 ;;;; Optional configuration
 
 ;; Profile emacs startup
