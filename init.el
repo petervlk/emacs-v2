@@ -11,6 +11,7 @@
 ;; to `package-selected-packages'.
 (add-to-list 'package-selected-packages 'no-littering)
 (add-to-list 'package-selected-packages 'magit)
+(add-to-list 'package-selected-packages 'git-timemachine)
 (require 'crafted-completion-packages)
 (require 'crafted-evil-packages)
 (require 'crafted-lisp-packages)
