@@ -125,6 +125,12 @@
  '(magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1))
 
 
+;;;; Dired
+(custom-set-variables
+ '(dired-listing-switches "-alh --group-directories-first")
+ '(dired-kill-when-opening-new-dired-buffer t))
+
+
 ;;;; Optional configuration
 
 ;; Profile emacs startup
