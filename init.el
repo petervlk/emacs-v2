@@ -56,6 +56,12 @@
 (global-corfu-mode 1)
 (customize-set-variable 'tab-always-indent 'complete)
 
+;; evil navigate minibuffer
+(with-eval-after-load 'evil
+  (keymap-set vertico-map "C-j" #'vertico-next)
+  (keymap-set vertico-map "C-k" #'vertico-previous)
+  (keymap-set vertico-map "M-h" #'vertico-directory-up))
+
 (require 'crafted-evil-config)
 (require 'crafted-lisp-config)
 
