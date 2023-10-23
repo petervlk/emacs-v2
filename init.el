@@ -16,6 +16,9 @@
 (require 'crafted-evil-packages)
 (require 'crafted-lisp-packages)
 (require 'crafted-ide-packages)
+
+(add-to-list 'package-selected-packages 'rainbow-delimiters)
+
 (require 'crafted-ui-packages)
 (require 'crafted-writing-packages)
 (add-to-list 'package-selected-packages 'minions)
@@ -42,6 +45,8 @@
 (require 'crafted-evil-config)
 (require 'crafted-lisp-config)
 (require 'crafted-ide-config)
+
+(add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
 
 ;;;; UI
 (require 'crafted-ui-config)
