@@ -144,6 +144,22 @@
 ;; highlight current line
 (global-hl-line-mode t)
 
+(defun pv-buffer-name ()
+  "Sets the buffer name while taking current project and buffer visiting file into consideration."
+  (let ((fname (buffer-file-name))
+        (project (project-current)))
+    (cond
+     ((not fname) (buffer-name))
+     ((not project) (abbreviate-file-name fname))
+     (t (let ((project-name (file-name-nondirectory
+                             (directory-file-name
+                              (project-root project))))
+              (project-file (file-relative-name fname (project-root project))))
+          (file-name-concat project-name project-file))))))
+
+(setq-default mode-line-buffer-identification
+              '(:eval (propertize (pv-buffer-name) 'face 'mode-line-buffer-id)))
+
 ;; Include entire file path in title
 (setq frame-title-format '(buffer-file-name "%f" ("%b")))
 
