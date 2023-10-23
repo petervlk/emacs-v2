@@ -20,6 +20,9 @@
 
 (add-to-list 'package-selected-packages 'rainbow-delimiters)
 
+(add-to-list 'package-selected-packages 'lsp-mode)
+(add-to-list 'package-selected-packages 'consult-lsp)
+
 (require 'crafted-ui-packages)
 (require 'crafted-writing-packages)
 (add-to-list 'package-selected-packages 'minions)
@@ -100,6 +103,32 @@
 (require 'crafted-ide-config)
 
 (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
+
+;; https://github.com/minad/corfu/wiki#basic-example-configuration-with-orderless
+(defun cw/lsp-mode-setup-completion ()
+  (setf (alist-get 'styles (alist-get 'lsp-capf completion-category-defaults))
+        '(orderless))) ;; Configure orderless
+
+(add-hook 'lsp-completion-mode #'cw/lsp-mode-setup-completion)
+
+(custom-set-variables
+ '(lsp-completion-provider :none)
+ '(lsp-eldoc-enable-hover nil) ;; use CIDER eldoc (this should be turned off only for clojure mode)
+ '(lsp-enable-indentation nil) ; uncomment to use cider indentation instead of lsp
+ '(lsp-enable-symbol-highlighting nil)
+ '(lsp-headerline-breadcrumb-enable nil)
+ '(lsp-lens-enable t) ;;Reference and test counts
+ '(lsp-modeline-code-actions-enable nil) ;; Don't clutter modeline
+ ;; '(lsp-modeline-diagnostics-enable nil) ;; Don't clutter modeline
+ '(lsp-signature-auto-activate nil)
+ '(lsp-signature-render-documentation nil))
+
+(custom-set-variables
+ '(lsp-ui-doc-enable t)
+ '(lsp-ui-doc-show-with-mouse nil)
+ '(lsp-ui-doc-show-with-cursor nil)
+ '(lsp-ui-doc-childframe nil))
+
 
 ;;;; UI
 (require 'crafted-ui-config)
