@@ -47,6 +47,9 @@
  )
 
 (require 'crafted-completion-config)
+(global-corfu-mode 1)
+(customize-set-variable 'tab-always-indent 'complete)
+
 (require 'crafted-evil-config)
 (require 'crafted-lisp-config)
 
