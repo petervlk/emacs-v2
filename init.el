@@ -49,6 +49,9 @@
  '(backup-directory-alist `((".*" . ,(no-littering-expand-var-file-name "backup/"))))
  )
 
+;; show line numbers
+(add-hook 'prog-mode-hook 'display-line-numbers-mode)
+
 (require 'crafted-completion-config)
 (global-corfu-mode 1)
 (customize-set-variable 'tab-always-indent 'complete)
