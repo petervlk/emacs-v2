@@ -10,6 +10,7 @@
 ;; Add package definitions for completion packages
 ;; to `package-selected-packages'.
 (add-to-list 'package-selected-packages 'no-littering)
+(add-to-list 'package-selected-packages 'hydra)
 (add-to-list 'package-selected-packages 'magit)
 (add-to-list 'package-selected-packages 'git-timemachine)
 (require 'crafted-completion-packages)
@@ -22,6 +23,10 @@
 (require 'crafted-ui-packages)
 (require 'crafted-writing-packages)
 (add-to-list 'package-selected-packages 'minions)
+
+;; structural editing - packages
+(add-to-list 'package-selected-packages 'smartparens)
+(add-to-list 'package-selected-packages 'evil-smartparens)
 
 ;; Install selected packages
 (package-install-selected-packages :noconfirm)
@@ -44,6 +49,51 @@
 (require 'crafted-completion-config)
 (require 'crafted-evil-config)
 (require 'crafted-lisp-config)
+
+;; structural editing - config
+(require 'smartparens-config)
+
+(custom-set-variables
+ '(show-smartparens-global-mode t)
+ '(sp-navigate-interactive-always-progress-point t))
+
+(add-hook 'smartparens-enabled-hook #'evil-smartparens-mode)
+(add-hook 'emacs-lisp-mode-hook #'evil-smartparens-mode)
+(add-hook 'emacs-lisp-mode-hook #'smartparens-strict-mode)
+
+(defhydra smartparens-hydra (:hint nil)
+  "
+  _w_: next        _>_: barf     _(_: wrap round             _u_: splice     _d_: kill    _j_: down sexp    _q_: quit
+  _W_: next lvl    _<_: slurp    _[_: wrap square            _r_: raise      _y_: copy    _k_: up sexp      ^ ^
+  _b_: prev        ^ ^           _{_: wrap curly             ^ ^             _Y_: copy    ^ ^               ^ ^
+  _B_: prev lvl    ^ ^           _\"_: wrap double quotes
+  "
+  (">" sp-forward-barf-sexp)
+  ("<" sp-forward-slurp-sexp)
+
+  ("j" sp-down-sexp)
+  ("k" sp-backward-up-sexp)
+  ("w" sp-next-sexp)
+  ("W" sp-beginning-of-next-sexp)
+  ("b" sp-previous-sexp)
+  ("B" sp-beginning-of-previous-sexp)
+  ;; ("e" sp-end-of-next-sexp "End of Next sexp")
+
+  ("(" (lambda (&optional arg) (interactive "P") (sp-wrap-with-pair "(")) :color blue)
+  ("[" (lambda (&optional arg) (interactive "P") (sp-wrap-with-pair "[")) :color blue)
+  ("{" (lambda (&optional arg) (interactive "P") (sp-wrap-with-pair "{")) :color blue)
+  ("\"" (lambda (&optional arg) (interactive "P") (sp-wrap-with-pair "\"")) :color blue)
+
+  ("u" sp-splice-sexp :color blue)
+  ("r" sp-raise-sexp :color blue)
+
+  ("y" sp-copy-sexp  :color blue)
+  ("Y" sp-backwards-copy-sexp  :color blue)
+  ("d" sp-kill-sexp :color blue)
+  ("q" nil :color blue))
+
+(define-key smartparens-mode-map (kbd "M-s") 'smartparens-hydra/body)
+
 (require 'crafted-ide-config)
 
 (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
