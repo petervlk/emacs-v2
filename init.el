@@ -144,6 +144,8 @@
 ;; highlight current line
 (global-hl-line-mode t)
 
+;; Include entire file path in title
+(setq frame-title-format '(buffer-file-name "%f" ("%b")))
 
 ;;;; WRITING DOCS
 (require 'crafted-writing-config)
