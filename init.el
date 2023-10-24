@@ -24,6 +24,7 @@
 (add-to-list 'package-selected-packages 'consult-lsp)
 
 (add-to-list 'package-selected-packages 'lsp-java)
+(add-to-list 'package-selected-packages 'groovy-mode)
 
 (require 'crafted-ui-packages)
 (require 'crafted-writing-packages)
