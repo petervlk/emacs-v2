@@ -23,6 +23,8 @@
 (add-to-list 'package-selected-packages 'lsp-mode)
 (add-to-list 'package-selected-packages 'consult-lsp)
 
+(add-to-list 'package-selected-packages 'lsp-java)
+
 (require 'crafted-ui-packages)
 (require 'crafted-writing-packages)
 (add-to-list 'package-selected-packages 'minions)
@@ -221,6 +223,11 @@
 
 ;; Make it possible to ignore risky local variables
 (advice-add 'risky-local-variable-p :override #'ignore)
+
+
+;;;; Java
+
+(add-hook 'java-mode-hook 'lsp)
 
 
 ;;;; Clojure
