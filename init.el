@@ -248,6 +248,12 @@
     (shell-command-to-string (format "cljfmt fix %s" buffer-file-name))
     (revert-buffer :ignore-auto :noconfirm)))
 
+;; Cider
+(custom-set-variables
+ '(cider-save-file-on-load t) ;; save files when evaluating them
+ '(cider-repl-pop-to-buffer-on-connect nil) ;; don't pop up repl when connecting
+ )
+
 
 ;;;; Optional configuration
 
