@@ -225,6 +225,10 @@
 
 ;;;; Clojure
 
+(custom-set-variables
+ '(clojure-toplevel-inside-comment-form t) ;; cider-defun-at-point treats contents of comment block as top level functions
+ )
+
 (setq clojure-align-forms-automatically t
       clojure-indent-style 'align-arguments)
 
