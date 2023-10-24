@@ -254,6 +254,18 @@
  '(cider-repl-pop-to-buffer-on-connect nil) ;; don't pop up repl when connecting
  )
 
+;; Clj-refactor
+(custom-set-variables
+ '(cljr-favor-prefix-notation nil)
+ '(cljr-favor-private-functions nil)
+ '(cljr-insert-newline-after-require nil)
+ '(cljr-assume-language-context "clj")
+ '(cljr-warn-on-eval nil) ;; disable warning
+ )
+
+(setq cljr-clojure-test-declaration "[clojure.test :refer [deftest is testing]]")
+(setq cljr-cljs-clojure-test-declaration cljr-clojure-test-declaration)
+(setq cljr-cljc-clojure-test-declaration cljr-clojure-test-declaration)
 
 ;;;; Optional configuration
 
