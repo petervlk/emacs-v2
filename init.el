@@ -121,9 +121,9 @@
 ;; https://github.com/minad/corfu/wiki#basic-example-configuration-with-orderless
 (defun cw/lsp-mode-setup-completion ()
   (setf (alist-get 'styles (alist-get 'lsp-capf completion-category-defaults))
-        '(orderless))) ;; Configure orderless
+        '(flex))) ;; Configure orderless
 
-(add-hook 'lsp-completion-mode #'cw/lsp-mode-setup-completion)
+(add-hook 'lsp-completion-mode-hook #'cw/lsp-mode-setup-completion)
 
 (custom-set-variables
  '(lsp-completion-provider :none)
