@@ -57,7 +57,9 @@
 
 (require 'crafted-completion-config)
 (global-corfu-mode 1)
-(customize-set-variable 'tab-always-indent 'complete)
+(custom-set-variables
+ '(tab-always-indent 'complete)
+ '(completion-cycle-threshold nil))
 
 ;; evil navigate minibuffer
 (with-eval-after-load 'evil
