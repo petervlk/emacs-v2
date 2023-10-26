@@ -77,6 +77,33 @@
 (require 'crafted-evil-config)
 (require 'crafted-lisp-config)
 
+(defun mp-flycheck-eldoc (callback &rest _ignored)
+  "Print flycheck messages at point by calling CALLBACK."
+  (when-let ((flycheck-errors (and flycheck-mode (flycheck-overlay-errors-at (point)))))
+    (mapc
+     (lambda (err)
+       (funcall callback
+                (format "%s: %s"
+                        (let ((level (flycheck-error-level err)))
+                          (pcase level
+                            ('info (propertize "I" 'face 'flycheck-error-list-info))
+                            ('error (propertize "E" 'face 'flycheck-error-list-error))
+                            ('warning (propertize "W" 'face 'flycheck-error-list-warning))
+                            (_ level)))
+                        (flycheck-error-message err))
+                :thing (or (flycheck-error-id err)
+                           (flycheck-error-group err))
+                :face 'font-lock-doc-face))
+     flycheck-errors)))
+
+(defun mp-flycheck-prefer-eldoc ()
+  (add-hook 'eldoc-documentation-functions #'mp-flycheck-eldoc nil t)
+  (setq eldoc-documentation-strategy 'eldoc-documentation-compose)
+  (setq flycheck-display-errors-function nil)
+  (setq flycheck-help-echo-function nil))
+
+(add-hook 'flycheck-mode-hook #'mp-flycheck-prefer-eldoc)
+
 ;; structural editing - config
 (require 'smartparens-config)
 
@@ -131,6 +158,11 @@
         '(flex))) ;; Configure orderless
 
 (add-hook 'lsp-completion-mode-hook #'cw/lsp-mode-setup-completion)
+
+(defun mp-lsp-eldoc ()
+  (setq eldoc-documentation-strategy 'eldoc-documentation-compose))
+
+(add-hook 'lsp-managed-mode-hook #'mp-lsp-eldoc)
 
 (custom-set-variables
  '(lsp-completion-provider :none)
