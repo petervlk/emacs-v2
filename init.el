@@ -7,6 +7,9 @@
 ;; Bootstrap crafted-emacs in init.el
 (load "~/.config/emacs/crafted-emacs/modules/crafted-init-config")
 
+(setq package-pinned-packages
+      '((lsp-mode . "melpa")))
+
 ;; Add package definitions for completion packages
 ;; to `package-selected-packages'.
 (add-to-list 'package-selected-packages 'no-littering)
