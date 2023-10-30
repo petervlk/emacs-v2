@@ -136,7 +136,7 @@
  '(lsp-completion-provider :none)
  '(lsp-eldoc-enable-hover nil) ;; use CIDER eldoc (this should be turned off only for clojure mode)
  '(lsp-enable-indentation nil) ; uncomment to use cider indentation instead of lsp
- '(lsp-enable-symbol-highlighting nil)
+ '(lsp-enable-symbol-highlighting t)
  '(lsp-headerline-breadcrumb-enable nil)
  '(lsp-lens-enable t) ;;Reference and test counts
  '(lsp-modeline-code-actions-enable nil) ;; Don't clutter modeline
