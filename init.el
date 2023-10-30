@@ -13,6 +13,7 @@
 ;; Add package definitions for completion packages
 ;; to `package-selected-packages'.
 (add-to-list 'package-selected-packages 'no-littering)
+(add-to-list 'package-selected-packages 'direnv)
 (add-to-list 'package-selected-packages 'hydra)
 (add-to-list 'package-selected-packages 'magit)
 (add-to-list 'package-selected-packages 'git-timemachine)
@@ -39,6 +40,9 @@
 
 ;; Install selected packages
 (package-install-selected-packages :noconfirm)
+
+;;use direnv
+(direnv-mode)
 
 ;; Load configuration for the completion module
 (require 'crafted-defaults-config)
