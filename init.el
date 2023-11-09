@@ -98,7 +98,7 @@
 
 (defun mp-flycheck-prefer-eldoc ()
   (add-hook 'eldoc-documentation-functions #'mp-flycheck-eldoc nil t)
-  (setq eldoc-documentation-strategy 'eldoc-documentation-compose)
+  (setq eldoc-documentation-strategy 'eldoc-documentation-compose-eagerly)
   (setq flycheck-display-errors-function nil)
   (setq flycheck-help-echo-function nil))
 
