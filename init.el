@@ -212,7 +212,6 @@
   "l" 'dired-find-file)
 
 (keymap-set minibuffer-local-map "C-d" #'embark-act)
-(keymap-set project-prefix-map "g" #'consult-ripgrep)
 
 
 ;;;; Source Control
@@ -230,6 +229,11 @@
 
 
 ;;;; Project
+
+(require 'significant-other)
+
+(keymap-set project-prefix-map "g" #'consult-ripgrep)
+(keymap-set project-prefix-map "t" #'significant-other-jump)
 
 ;; Make it possible to ignore risky local variables
 (advice-add 'risky-local-variable-p :override #'ignore)
@@ -264,6 +268,30 @@
             (eq major-mode 'clojurescript-mode))
     (shell-command-to-string (format "cljfmt fix %s" buffer-file-name))
     (revert-buffer :ignore-auto :noconfirm)))
+
+;; significant other
+
+(require 's)
+
+(defun setup-clojure-mode-significant-other ()
+  (with-significant-others file-name
+    ("/src/.+\.cljc" (list (s-with file-name
+                             (s-replace "/src/" "/test/")
+                             (s-replace ".cljc" "_test.clj"))))
+    ("/src/.+\.clj"  (list (s-with file-name
+                             (s-replace "/src/" "/test/")
+                             (s-replace ".clj" "_test.clj"))))
+    ("/test/.+\.clj" (list (s-with file-name
+                             (s-replace "/test/" "/src/")
+                             (s-replace "_test.clj" ".clj"))
+                           (s-with file-name
+                             (s-replace "/test/" "/src/")
+                             (s-replace "_test.clj" ".cljc"))))))
+
+(dolist (hook '(clojure-mode-hook
+                clojurec-mode-hook
+                clojurescript-mode-hook))
+  (add-hook hook #'setup-clojure-mode-significant-other))
 
 ;; Cider
 (custom-set-variables
