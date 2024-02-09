@@ -193,11 +193,18 @@
 ;; Set preferred key bindings
 (keymap-global-set "M-/"        #'evilnc-comment-or-uncomment-lines)
 (keymap-global-set "C-M-u"      #'universal-argument)
-(keymap-global-set "C-M-j"      #'consult-buffer)
 (keymap-global-set "C-M-;"      #'magit-status)
 (keymap-global-set "C-<return>" #'embark-act)
 (keymap-global-set "C-x C-b"    #'ibuffer)
-(keymap-global-set "C-x C-r"    #'recentf-open-files)
+
+(keymap-global-set "C-M-j"   #'consult-buffer)
+(keymap-global-set "C-x C-r" #'consult-recent-file)
+(keymap-global-set "C-x C-i" #'consult-imenu)
+(keymap-global-set "C-x M-i" #'consult-imenu-multi)
+
+(keymap-set evil-normal-state-map "C-p" #'consult-yank-from-kill-ring)
+(keymap-set evil-insert-state-map "C-p" #'consult-yank-from-kill-ring)
+(keymap-set evil-visual-state-map "C-p" #'consult-yank-from-kill-ring)
 
 (keymap-set evil-motion-state-map "[ j" #'evil-jump-backward)
 (keymap-set evil-motion-state-map "] j" #'evil-jump-forward)
@@ -212,6 +219,8 @@
   "l" 'dired-find-file)
 
 (keymap-set minibuffer-local-map "C-d" #'embark-act)
+
+(global-set-key [remap bookmark-jump] 'consult-bookmark)
 
 
 ;;;; Source Control
