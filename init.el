@@ -223,6 +223,9 @@
 
 
 ;;;; Dired
+(keymap-global-unset "C-x C-d")
+(keymap-global-set "C-x C-d" 'dired-jump-other-window)
+
 (custom-set-variables
  '(dired-listing-switches "-alh --group-directories-first")
  '(dired-kill-when-opening-new-dired-buffer t))
