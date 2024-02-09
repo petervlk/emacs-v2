@@ -191,20 +191,20 @@
 ;;;; Key bindings
 
 ;; Set preferred key bindings
-(keymap-global-set "M-/" #'evilnc-comment-or-uncomment-lines)
-(keymap-global-set "C-M-u" #'universal-argument)
-(keymap-global-set "C-M-j" #'consult-buffer)
-(keymap-global-set "C-M-;" #'magit-status)
+(keymap-global-set "M-/"        #'evilnc-comment-or-uncomment-lines)
+(keymap-global-set "C-M-u"      #'universal-argument)
+(keymap-global-set "C-M-j"      #'consult-buffer)
+(keymap-global-set "C-M-;"      #'magit-status)
 (keymap-global-set "C-<return>" #'embark-act)
-(keymap-global-set "C-x C-b" #'ibuffer)
-(keymap-global-set "C-x C-r" #'recentf-open-files)
+(keymap-global-set "C-x C-b"    #'ibuffer)
+(keymap-global-set "C-x C-r"    #'recentf-open-files)
 
 (keymap-set evil-motion-state-map "[ j" #'evil-jump-backward)
 (keymap-set evil-motion-state-map "] j" #'evil-jump-forward)
 
-(keymap-set evil-window-map "C-q" #'evil-quit)
-(keymap-set evil-window-map "C-b" #'bookmark-jump-other-window)
-(keymap-set evil-window-map "C-d" #'dired-other-window)
+(keymap-set evil-window-map "C-q"   #'evil-quit)
+(keymap-set evil-window-map "C-b"   #'bookmark-jump-other-window)
+(keymap-set evil-window-map "C-d"   #'dired-other-window)
 (keymap-set evil-window-map "C-M-j" #'consult-buffer-other-window)
 
 (evil-collection-define-key 'normal 'dired-mode-map
