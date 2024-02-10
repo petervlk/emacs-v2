@@ -191,7 +191,6 @@
 ;;;; Key bindings
 
 ;; Set preferred key bindings
-(keymap-global-set "M-/"        #'evilnc-comment-or-uncomment-lines)
 (keymap-global-set "C-M-u"      #'universal-argument)
 (keymap-global-set "C-M-;"      #'magit-status)
 (keymap-global-set "C-<return>" #'embark-act)
