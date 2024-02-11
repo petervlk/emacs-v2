@@ -68,6 +68,9 @@
  '(tab-always-indent 'complete)
  '(completion-cycle-threshold nil))
 
+;; search in hidden files. using setq to keep original value intact
+(setq consult-ripgrep-args (concat consult-ripgrep-args " --hidden"))
+
 ;; evil navigate minibuffer
 (with-eval-after-load 'evil
   (keymap-set vertico-map "C-j" #'vertico-next)
