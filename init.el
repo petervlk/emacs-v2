@@ -8,7 +8,8 @@
 (load "~/.config/emacs/crafted-emacs/modules/crafted-init-config")
 
 (setq package-pinned-packages
-      '((lsp-mode . "melpa")))
+      '((lsp-mode . "melpa")
+        (projectile . "melpa-stable")))
 
 ;; Add package definitions for completion packages
 ;; to `package-selected-packages'.
@@ -17,6 +18,7 @@
 (add-to-list 'package-selected-packages 'hydra)
 (add-to-list 'package-selected-packages 'magit)
 (add-to-list 'package-selected-packages 'git-timemachine)
+(add-to-list 'package-selected-packages 'projectile)
 (require 'crafted-completion-packages)
 (require 'crafted-evil-packages)
 (require 'crafted-lisp-packages)
@@ -253,6 +255,9 @@
 
 
 ;;;; Project
+
+(require 'projectile)
+(projectile-mode +1)
 
 (require 'significant-other)
 
