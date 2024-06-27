@@ -220,6 +220,13 @@
 (keymap-set evil-insert-state-map "C-p" #'consult-yank-from-kill-ring)
 (keymap-set evil-visual-state-map "C-p" #'consult-yank-from-kill-ring)
 
+;; https://stackoverflow.com/a/11319885 - How do I bind a command to C-i without changing TAB?
+;; unmap 'indent-for-tab-command
+(keymap-set input-decode-map "C-i" "H-i")
+(keymap-set evil-normal-state-map "H-i" #'evil-jump-forward)
+(keymap-set evil-insert-state-map "H-i" #'evil-jump-forward)
+(keymap-set evil-visual-state-map "H-i" #'evil-jump-forward)
+
 (keymap-set evil-motion-state-map "[ j" #'evil-jump-backward)
 (keymap-set evil-motion-state-map "] j" #'evil-jump-forward)
 
