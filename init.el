@@ -207,12 +207,25 @@
 
 ;; Set preferred key bindings
 (keymap-global-set "C-M-u"      #'universal-argument)
-(keymap-global-set "C-M-;"      #'magit-status)
-(keymap-global-set "C-<return>" #'embark-act)
-(keymap-global-set "C-x C-b"    #'ibuffer)
 
-(keymap-global-set "C-M-j"   #'consult-buffer)
-(keymap-global-set "C-x C-r" #'consult-recent-file)
+(keymap-global-set "C-M-;"      #'magit-status) ;; DEPRECATED
+(keymap-set evil-normal-state-map "SPC g g" #'magit-status)
+(keymap-set evil-visual-state-map "SPC g g" #'magit-status)
+
+(keymap-global-set "C-<return>" #'embark-act)
+
+(keymap-global-set "C-x C-b"    #'ibuffer) ;; DEPRECATED
+(keymap-set evil-normal-state-map "SPC b i" #'ibuffer)
+(keymap-set evil-visual-state-map "SPC b i" #'ibuffer)
+
+(keymap-global-set "C-M-j"   #'consult-buffer) ;; DEPRECATED
+(keymap-set evil-normal-state-map "SPC b b" #'consult-buffer)
+(keymap-set evil-visual-state-map "SPC b b" #'consult-buffer)
+
+(keymap-global-set "C-x C-r" #'consult-recent-file) ;; DEPRECATED
+(keymap-set evil-normal-state-map "SPC f r" #'consult-recent-file)
+(keymap-set evil-visual-state-map "SPC f r" #'consult-recent-file)
+
 (keymap-global-set "C-x C-i" #'consult-imenu)
 (keymap-global-set "C-x M-i" #'consult-imenu-multi)
 
@@ -227,8 +240,8 @@
 (keymap-set evil-insert-state-map "H-i" #'evil-jump-forward)
 (keymap-set evil-visual-state-map "H-i" #'evil-jump-forward)
 
-(keymap-set evil-motion-state-map "[ j" #'evil-jump-backward)
-(keymap-set evil-motion-state-map "] j" #'evil-jump-forward)
+(keymap-set evil-motion-state-map "[ j" #'evil-jump-backward) ;; DEPRECATED
+(keymap-set evil-motion-state-map "] j" #'evil-jump-forward)  ;; DEPRECATED
 
 (keymap-set evil-window-map "C-q"   #'evil-quit)
 (keymap-set evil-window-map "C-b"   #'bookmark-jump-other-window)
