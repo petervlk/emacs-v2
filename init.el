@@ -221,6 +221,10 @@
 (keymap-global-set "C-M-j"   #'consult-buffer) ;; DEPRECATED
 (keymap-set evil-normal-state-map "SPC b b" #'consult-buffer)
 (keymap-set evil-visual-state-map "SPC b b" #'consult-buffer)
+(keymap-set evil-normal-state-map "SPC b n" #'evil-next-buffer)
+(keymap-set evil-visual-state-map "SPC b n" #'evil-next-buffer)
+(keymap-set evil-normal-state-map "SPC b p" #'evil-prev-buffer)
+(keymap-set evil-visual-state-map "SPC b p" #'evil-prev-buffer)
 
 (keymap-global-set "C-x C-r" #'consult-recent-file) ;; DEPRECATED
 (keymap-set evil-normal-state-map "SPC f r" #'consult-recent-file)
