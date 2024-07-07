@@ -165,6 +165,9 @@
  '(lsp-ui-doc-show-with-cursor nil)
  '(lsp-ui-doc-childframe nil))
 
+(with-eval-after-load 'lsp-mode
+  (keymap-set evil-normal-state-map "SPC l" lsp-command-map))
+
 
 ;;;; UI
 (require 'crafted-ui-config)
