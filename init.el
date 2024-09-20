@@ -247,13 +247,9 @@
 (keymap-set evil-insert-state-map "H-i" #'evil-jump-forward)
 (keymap-set evil-visual-state-map "H-i" #'evil-jump-forward)
 
-(keymap-set evil-motion-state-map "[ j" #'evil-jump-backward) ;; DEPRECATED
-(keymap-set evil-motion-state-map "] j" #'evil-jump-forward)  ;; DEPRECATED
 
-(keymap-set evil-window-map "C-q"   #'evil-quit)
-(keymap-set evil-window-map "C-b"   #'bookmark-jump-other-window)
-(keymap-set evil-window-map "C-d"   #'dired-other-window)
-(keymap-set evil-window-map "C-M-j" #'consult-buffer-other-window)
+(keymap-set evil-normal-state-map "SPC w" 'evil-window-map)
+(keymap-set evil-window-map "b"   #'bookmark-jump-other-window)
 
 (evil-collection-define-key 'normal 'dired-mode-map
   "h" 'dired-up-directory
