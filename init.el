@@ -290,6 +290,7 @@
 
 (keymap-set project-prefix-map "g" #'consult-ripgrep)
 (keymap-set project-prefix-map "t" #'significant-other-jump)
+(keymap-set evil-normal-state-map "SPC p" project-prefix-map)
 
 ;; Make it possible to ignore risky local variables
 (advice-add 'risky-local-variable-p :override #'ignore)
