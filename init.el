@@ -217,6 +217,10 @@
 
 (keymap-global-set "C-<return>" #'embark-act)
 
+;; add evil bindings for M-x
+(keymap-set evil-normal-state-map "SPC SPC" #'execute-extended-command)
+(keymap-set evil-visual-state-map "SPC SPC" #'execute-extended-command)
+
 (keymap-global-set "C-x C-b"    #'ibuffer) ;; DEPRECATED
 (keymap-set evil-normal-state-map "SPC b i" #'ibuffer)
 (keymap-set evil-visual-state-map "SPC b i" #'ibuffer)
