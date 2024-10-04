@@ -134,7 +134,8 @@
   ("d" sp-kill-sexp :color blue)
   ("q" nil :color blue))
 
-(define-key smartparens-mode-map (kbd "M-s") 'smartparens-hydra/body)
+(keymap-set evil-normal-state-map ", s" 'smartparens-hydra/body)
+(keymap-set evil-visual-state-map ", s" 'smartparens-hydra/body)
 
 (require 'crafted-ide-config)
 
@@ -211,10 +212,6 @@
 ;; Set preferred key bindings
 (keymap-global-set "C-M-u"      #'universal-argument)
 
-(keymap-global-set "C-M-;"      #'magit-status) ;; DEPRECATED
-(keymap-set evil-normal-state-map "SPC g g" #'magit-status)
-(keymap-set evil-visual-state-map "SPC g g" #'magit-status)
-
 (keymap-global-set "C-<return>" #'embark-act)
 
 ;; add evil bindings for M-x
@@ -225,17 +222,20 @@
 (keymap-set evil-normal-state-map "SPC b i" #'ibuffer)
 (keymap-set evil-visual-state-map "SPC b i" #'ibuffer)
 
-(keymap-global-set "C-M-j"   #'consult-buffer) ;; DEPRECATED
 (keymap-set evil-normal-state-map "SPC b b" #'consult-buffer)
 (keymap-set evil-visual-state-map "SPC b b" #'consult-buffer)
 (keymap-set evil-normal-state-map "SPC b n" #'evil-next-buffer)
 (keymap-set evil-visual-state-map "SPC b n" #'evil-next-buffer)
 (keymap-set evil-normal-state-map "SPC b p" #'evil-prev-buffer)
 (keymap-set evil-visual-state-map "SPC b p" #'evil-prev-buffer)
+(keymap-set evil-normal-state-map "SPC b o" #'consult-buffer-other-window)
 
-(keymap-global-set "C-x C-r" #'consult-recent-file) ;; DEPRECATED
 (keymap-set evil-normal-state-map "SPC f r" #'consult-recent-file)
 (keymap-set evil-visual-state-map "SPC f r" #'consult-recent-file)
+(keymap-set evil-normal-state-map "SPC f s" #'save-buffer)
+(keymap-set evil-visual-state-map "SPC f s" #'save-buffer)
+(keymap-set evil-normal-state-map "SPC f S" #'save-some-buffers)
+(keymap-set evil-visual-state-map "SPC f S" #'save-some-buffers)
 
 (keymap-global-set "C-x C-i" #'consult-imenu)
 (keymap-global-set "C-x M-i" #'consult-imenu-multi)
@@ -271,10 +271,17 @@
                       unstage-all-changes))
  '(magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1))
 
+(keymap-set evil-normal-state-map "SPC g g" #'magit-status)
+(keymap-set evil-visual-state-map "SPC g g" #'magit-status)
+(keymap-set evil-normal-state-map "SPC g b" #'magit-blame)
+(keymap-set evil-normal-state-map "SPC g t" #'git-timemachine)
+(keymap-set evil-visual-state-map "SPC g t" #'git-timemachine)
 
 ;;;; Dired
-(keymap-global-unset "C-x C-d")
-(keymap-global-set "C-x C-d" 'dired-jump-other-window)
+(keymap-set evil-normal-state-map "SPC d o" 'dired-jump-other-window)
+(keymap-set evil-visual-state-map "SPC d o" 'dired-jump-other-window)
+(keymap-set evil-normal-state-map "SPC d d" 'dired-jump)
+(keymap-set evil-visual-state-map "SPC d d" 'dired-jump)
 
 (custom-set-variables
  '(dired-listing-switches "-alh --group-directories-first")
@@ -325,6 +332,23 @@
             (eq major-mode 'clojurescript-mode))
     (shell-command-to-string (format "cljfmt fix %s" buffer-file-name))
     (revert-buffer :ignore-auto :noconfirm)))
+
+(evil-define-key 'normal clojure-mode-map
+  (kbd ", ;") #'clojure-toggle-ignore
+  (kbd ", c c") #'cider-connect
+  (kbd ", c s") #'sesman-browser
+  )
+
+(evil-define-key 'normal cider-mode-map
+  (kbd ", c i") #'cider-inspect-last-result
+  (kbd ", c q") #'sesman-quit-session
+  (kbd ", e b") #'cider-eval-buffer
+  (kbd ", e e") #'cider-eval-defun-at-point
+  (kbd ", e s") #'cider-eval-sexp-at-point
+  (kbd ", t n") #'cider-test-run-ns-tests
+  (kbd ", t r") #'cider-test-show-report
+  (kbd ", t t") #'cider-test-run-test
+  )
 
 ;; significant other
 
