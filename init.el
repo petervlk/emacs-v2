@@ -341,7 +341,7 @@
 
 (evil-define-key 'normal cider-mode-map
   (kbd ", c i") #'cider-inspect-last-result
-  (kbd ", c q") #'sesman-quit-session
+  (kbd ", c q") #'sesman-quit
   (kbd ", e b") #'cider-eval-buffer
   (kbd ", e e") #'cider-eval-defun-at-point
   (kbd ", e s") #'cider-eval-sexp-at-point
@@ -376,6 +376,7 @@
 
 ;; Cider
 (custom-set-variables
+ '(cider-test-fail-fast nil)
  '(cider-save-file-on-load t) ;; save files when evaluating them
  '(cider-repl-pop-to-buffer-on-connect nil) ;; don't pop up repl when connecting
  )
