@@ -167,7 +167,7 @@
  '(lsp-ui-doc-childframe nil))
 
 (with-eval-after-load 'lsp-mode
-  (keymap-set evil-normal-state-map "SPC l" lsp-command-map))
+  (keymap-set evil-normal-state-map ", l" lsp-command-map))
 
 
 ;;;; UI
