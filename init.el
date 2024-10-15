@@ -341,6 +341,7 @@
 
 (evil-define-key 'normal cider-mode-map
   (kbd ", c i") #'cider-inspect-last-result
+  (kbd ", c d") #'cider-clojuredocs
   (kbd ", c q") #'sesman-quit
   (kbd ", e b") #'cider-eval-buffer
   (kbd ", e e") #'cider-eval-defun-at-point
